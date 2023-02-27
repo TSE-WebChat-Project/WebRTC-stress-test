@@ -1,21 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello Bulma!!');
+ 
 });
 
-let myFunction = (a, b) => a + b;
-document.getElementById("add").innerHTML = myFunction(1, 3);
 
-
-
-
-let info = { 
-  firstName: "Fred", 
-  lastName: "Okogie", 
-  course: "javascript" 
-} 
-
-console.log(delete info.course);
-console.log(info);
 
 
 
