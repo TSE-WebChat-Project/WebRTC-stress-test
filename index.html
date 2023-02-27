@@ -1,51 +1,184 @@
+[13:40, 19/02/2023] toju nana : let myFunction = (a, b) => a + b;
+document.getElementById("add").innerHTML = myFunction(1, 3);
+
+
+
+
+let info = { 
+  firstName: "Fred", 
+  lastName: "Okogie", 
+  course: "javascript" 
+} 
+
+console.log(delete info.course);
+console.log(info);
+
+
+
+
+function addListItemWithButton(id, ip, callback) {
+  //create a new list item element
+  const li = document.createElement('li');
+
+  //create a new button element
+  const button = document.createElement('button');
+
+  //set the text content of the butoon to 'Call function'
+  button.textContent = "Call function";
+
+  //Add a click listener to the button that calls the callback function with the id and ip as arguments
+  button.addEventListener('click', function() {
+    callback(id, ip);
+  });
+
+  //set the text context of the …
+[17:03, 19/02/2023] toju nana : You don send m
+[18:10, 19/02/2023] toju nana : <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebRTC Stress Test</title>
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body class="px-2">
-    <div class="columns is-desktop mt-2">
-      <div class="column">
-        <div class="box">
-          <h3 class="is-size-3 has-text-centered is-underlined">Webcam</h3>
-          <video id="vid-out" class="videoElem"></video>
-        </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebRTC Stress Test</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="px-2">
+  <div class="columns is-desktop mt-2">
+    <div class="column">
+      <div class="box">
+        <h3 class="is-size-3 has-text-centered is-underlined">Webcam</h3>
+        <video id="vid-out" class="videoElem"></video>
       </div>
-      <div class="column">
-        <div class="box">
-          <h3 class="is-size-3 has-text-centered is-underlined">Stream in</h3>
-          <video id="vid-in" class="videoElem"></video>
+    </div>
+    <div class="column">
+      <div class="box">
+        <h3 class="is-size-3 has-text-centered is-underlined">Stream in</h3>
+        <video id="vid-in" class="videoElem"></video>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-desktop is-flex-grow-1">
+    <div class="column">
+      <div class="box" style="height: 100%;">
+        <h3 class="is-size-3 has-text-centered is-underlined">Control Panel</h3>
+        <div class="field is-grouped">
+          <div class="control">
+            <button id="createNodes" class="button is-light">Add nodes</button>
+            <!-- <p id="add"></p> -->
+          </div>
+
+          <div class="control is-flex">
+            <input id="nodeNum" type="number" value="1" min="1" style="width: 4rem; text-align: center;">
+          </div>
+
+        </div>
+        <div class="control">
+          <button id="deleteNodes" class="button is-light">Delete all nodes</button>
         </div>
       </div>
     </div>
-    <div class="columns is-desktop is-flex-grow-1">
-      <div class="column">
-        <div class="box" style="height: 100%;">
-          <h3 class="is-size-3 has-text-centered is-underlined">Control Panel</h3>
-          <div class="field is-grouped">
-            <div class="control">
-              <button id="createNodes" class="button is-light">Add nodes</button>
-            </div>
-            <div class="control is-flex">
-              <input id="nodeNum" type="number" value="1" min="1" style="width: 4rem; text-align: center;">
-            </div>
-          </div>
-          <div class="control">
-            <button id="deleteNodes" class="button is-light">Delete all nodes</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="box" style="height: 100%;">
-          <h3 class="is-size-3 has-text-centered is-underlined">Nodes</h3>
+    <div class="column">
+      <div class="box" style="height: 100%;">
+        <h3 class="is-size-3 has-text-centered is-underlined">Nodes</h3>
 
+        <!-- box -->
+        <div class="box">
+
+          <!-- scrollable box -->
+          <div style="height:500px;line-height:3em;overflow:scroll;padding:5px; ">
+
+            <!-- box1 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- box2 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- box3 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- box4 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- box5 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- box6 -->
+            <div class="boxe mb-2">
+              <div class="columns is-mobile ">
+                <div class="control"></div>
+                <div class="column  px-5">
+                  <p>IP: ###.###.###.###</p>
+                  <p>ID: ###</p>
+                </div>
+                <div class="column mt-5 px-1 is-3">
+                  <button id="Nodes" class="button is-primary mt-1">View</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="lib/main.js"></script>
-  </body>
+</body>
+
 </html>
