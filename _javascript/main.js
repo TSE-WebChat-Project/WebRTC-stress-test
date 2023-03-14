@@ -1,31 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
- 
+$(function(){
+    console.log("ready");
+});
+
+$("#listNodes").click(function(){
+    listNodes();
+});
+
+function listNodes(){
+    $("#scrollbox").empty();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let resp = JSON.parse(xhttp.response);
+            for (var instance of resp){
+                $("#scrollbox").append('<div><a href="http://' + instance.ip + '/">' + instance.name + '</a></div>');
+            }
+        }
+    };
+    xhttp.open("GET", "http://127.0.0.1:5000/list", true);
+    xhttp.send();
+}
+
+$("#deleteNodes").click(function(){
+    $("#scrollbox").empty();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("deleted nodes");
+        }
+    };
+    xhttp.open("GET", "http://127.0.0.1:5000/delete", true);
+    xhttp.send();
 });
 
 
-
-
-
-
-function addListItemWithButton(id, ip, callback) {
-  //create a new list item element
-  const li = document.createElement('li');
-
-  //create a new button element
-  const button = document.createElement('button');
-
-  //set the text content of the butoon to 'Call function'
-  button.textContent = "Call function";
-
-  //Add a click listener to the button that calls the callback function with the id and ip as arguments
-  button.addEventListener('click', function() {
-    callback(id, ip);
-  });
-
-  //set the text context of the list item to "ID: {id}, IP: {ip}"
-  li.appendChild(button);
-
-  //Append the list item to the unordered list on the page
-  const ul = document.querySelector('ul');
-  ul.appendChild(li);
-}
+$("#createNodes").click(function(){
+    var xhttp = new XMLHttpRequest();
+    let size = $("#nodeNum").val();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            listNodes();
+        }
+    };
+    xhttp.open("GET", "http://127.0.0.1:5000/deploy/" + size, true);
+    xhttp.send();
+});
